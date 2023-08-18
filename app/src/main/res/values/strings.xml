@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TaskManager2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="task">Task</string>
+    <string name="onboarding">OnBoarding</string>
+    <string name="Name">Name\n</string>
+    <string name="title">Title</string>
+    <string name="description">Description...</string>
+</resources>
