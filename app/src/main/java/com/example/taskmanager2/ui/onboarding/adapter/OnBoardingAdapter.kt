@@ -4,17 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.example.taskmanager2.R
 import com.example.taskmanager2.databinding.ItemOnboardingBinding
 import com.example.taskmanager2.model.OnBoarding
+
 
 class OnBoardingAdapter(private val onClick: () -> Unit) :
     RecyclerView.Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
 
     private val data = arrayListOf<OnBoarding>(
-        OnBoarding("Reflect","Reflect your success with Task Manager!","https://uploads-ssl.webflow.com/6156c92cb3f1a26201745fa2/621b22f337c639bd78db0963_6197773c733ba15f7b3da1da_20943650-min.jpg"),
-        OnBoarding("Track Progress","You can easily track your daily progress!","https://img.freepik.com/free-vector/hand-drawn-business-planning-with-task-list_23-2149164275.jpg"),
-        OnBoarding("Perform","Perform your tasks efficiently!","https://miro.medium.com/max/1400/1*8ygFKYb0Yo6Hc-vnScGA9A.png")
+        OnBoarding("Reflect","Reflect your success with Task Manager!", "onboard.json"),
+        OnBoarding("Track Progress","You can easily track your daily progress!","animationone.json"),
+        OnBoarding("Perform","Perform your tasks efficiently!","animationtwo.json")
     )
 
 
@@ -41,7 +42,15 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         fun bind(onBoarding: OnBoarding) {
             binding.tvTitle.text = onBoarding.title
             binding.tvDesc.text = onBoarding.desc
-            Glide.with(binding.ivBoard).load(onBoarding.image).into(binding.ivBoard)
+            val animationView = binding.ivBoard
+
+                val resourceId = itemView.context.resources.getIdentifier(
+                    onBoarding.image,
+                    "raw",
+                    itemView.context.packageName
+                )
+            animationView.setAnimation(resourceId)
+            animationView.playAnimation()
 
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.skip.isVisible = adapterPosition != data.lastIndex
